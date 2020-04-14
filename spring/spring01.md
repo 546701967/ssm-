@@ -1,7 +1,7 @@
 #spring01传统的工厂模式解耦  
 传统模式contorller,service,dao层层相连，耦合度过高，无法更换其中的某层  
 使用工厂加配置文件的方式能实现解耦  
-'''
+'''  
 package com.factory;
 
 import java.io.InputStream;
@@ -39,7 +39,7 @@ public class BeanFactory {
     }
 
 }
-'''
+'''  
 这样contorller层获取service对象时可以通过BeanFactory读取配置文件获取  
 service层获取Dao层是也可以这样  
 降低了各组件的耦合性  
