@@ -38,7 +38,7 @@ public class BeanFactory {
         return beans.get(beanName);
     }
 
-}
+}  
 '''  
 这样contorller层获取service对象时可以通过BeanFactory读取配置文件获取  
 service层获取Dao层是也可以这样  
