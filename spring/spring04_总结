@@ -1,0 +1,17 @@
+配置关系
+属性
+		id：给对象在容器中提供一个唯一标识。用于获取对象。  
+　　class：指定类的权限定类名。用于反射创建对象。默认情况下调用无参构造函数。  
+　　scope：指定对象的作用范围。    
+　　init-method：指定类中的初始化方法名称。  
+　　destory-method：指定类中销毁方法名称。  
+ 次级标签
+ 		property 基于set方法注入  
+		各种容器方法  
+        construtor 基于构造函数注入  
+		name注入属性名称  
+		ref注入属性值  
+从工程中调用
+    Applicationcontext    提取bean的工厂  
+       ClassPathXmlApplicationContext  加载bean.xml配置文件   
+ 
