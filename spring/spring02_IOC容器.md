@@ -11,7 +11,11 @@ meven项目导入spring包
 spring IOC容器管理bean对象  
 
 ``` javascript
-
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
   <!--spring管理bean -->
         <!-- 创建bean的三种方式
             bean对象的作用范围
