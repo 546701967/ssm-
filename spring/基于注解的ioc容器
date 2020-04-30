@@ -1,0 +1,81 @@
+基于注解的ioc容器实现  
+
+``` javascript
+package com.service.impl;
+import com.dao.impl.AccountDao;
+//import com.factory.BeanFactory;
+import com.service.IAccountService;
+import org.springframework.stereotype.Service;
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+/**
+ * 曾经的xml注解
+ * <bean id=" " scope=" " init-method=" " destory-method=" ">
+ *     <property name=" " value=" "></property>
+ *
+ *
+ *     </>
+ *  用于创建对象的
+ *  component:
+ *      作用：把对象存入spring容器
+ *      属性：
+ *          value:用于指定bean的id，不写时，默认值为当前类名首字母小写
+ *      以下三个注解是对component的细化，方便管理
+ *      controller:
+ *      service：
+ *      repository:
+ *
+ *  用于注入数据的
+ *      他们的作用就和在xml配置文件中的bean标签中写一个<property>标签的作用是一样的
+ *      autowired：
+ *          作用：自动按照类型注入，只要容器中有唯一的一个bean对象类型和要注入的类型匹配
+ *                  如果ioc容器中没有匹配的类型报错
+ *                  如果ioc有多个按名字匹配
+ *          出现位置
+ *                  可以是变量上，也可以是方法上
+ *          使用注解时，可以省略set方法
+ *      qualifier
+ *          作用：在按照勒种注入的基础上再按指定的id注入，它在给类成员注入是不能单独使用
+ *          属性:value：用于指定注入bean的ud
+ *     resource
+ *          作用：直接按照bean的id注入，他可以单独使用
+ *          属性:
+ *              name:用于指定bean的id
+ *    以上三个用于注入其他bean类型的数据，集合类型的只能通过xml实现
+ *    value
+ *          作用：用于注入基本类型和string类型
+ *          属性
+ *              value:用于指定数据的值。它可以使用spring总spel
+ *              ${}
+ *
+ *     用于改变作用范围的
+ *           他们的作用就和在bean标签中使用scope属性实现
+ *           scope
+ *           属性：
+ *                  value:指定范围的取值
+ *                  常用的取值singleton  prototype
+ *           和生命周期相关
+ *           和init-method和destroy-method的作用一样
+ *           predestory
+ *              销毁方法
+ *           postconstruct
+ *              用于指定初始方法
+
+ */
+@Service("accountservice")
+public class AccountService implements IAccountService {
+
+    @Resource(name="accountDao")
+    private AccountDao accountDao = null;
+    public void saveAccount()
+    {
+        //AccountDao accountDao = (AccountDao)BeanFactory.getBean("accountDao");
+        accountDao.saveAccount();
+    }
+    @PostConstruct
+    public void init()
+    {
+        System.out.println("初始方法执行了");
+    }
+}
+```
